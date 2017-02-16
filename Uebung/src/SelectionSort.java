@@ -1,35 +1,35 @@
-import java.lang.reflect.Array;
-
 public class SelectionSort {
 	
 	public static void main(String[] args) {   // Hauptmethode
 		
-		int[] list = {5, 8, 3, 6, 8, 9, 4, 2,10, 574,0,5};   // Array wird angelegt
-		sortArray(list);									 // Array wird an die Funktion "SortArray" übergeben
+		int[] list = {5, 8, 3, 6, 8, 9, 3, 57, 71, 77, 4, 2, 10, 574 ,0 ,5};   // Array wird angelegt
+		output(list);
+		sortArray(list);									    // Array wird an die Funktion "SortArray" übergeben
 		
-
 		}
 	
 	
 	public static void sortArray(int[] array){
+		
 		for(int i=0;i<array.length;i++){     // für jedes Feld des Arrays
 	           
-	           output(array);				 // erstmal das ganze Array ausgeben, sieht schön aus (siehe Funktion "output")
-	           int minimum = findMinimum(array,i,array.length);  // mit der Funktion "findMinimum" wir die Position der kleinsten Zahl ermittelt und nach "minimum" geschrieben
+	               int minimum = findMinimum(array,i,array.length);  // mit der Funktion "findMinimum" wir die Position der kleinsten Zahl ermittelt und nach "minimum" geschrieben
 	           
 	           if(i!=minimum){				// wenn eine Zahl gefunden wird, die Kleiner als die, mit der verglichen wird, gefunden wird, werden die Zahlen in der swap Methode getauscht
 	           swap(array,i,minimum);
+	           output(array);				 // erstmal das ganze Array ausgeben, sieht schön aus (siehe Funktion "output")
+		       
 	           }
 	       }
 	   }	
 		
 	
 	
-	public static int swap(int[] array, int position1, int position2) {
+	public static void swap(int[] array, int position1, int position2) {
 		int tmp = array[position2]; 		//zwei Zahlen des Array werden getauscht.
 		array[position2]=array[position1];
 		array[position1]=tmp;
-		return position1;
+		
 		
 		 
 		
@@ -54,17 +54,26 @@ public class SelectionSort {
 	
 	
 	public static boolean isSorted(int[] array) {
-													// Das müsste noch implementiert werden!
-		return true;
+	boolean sorted = true;
+	int i = 0;
+	int endIndex=array.length;
+		
+		while(sorted && i<endIndex-1){		
+			if(array[i]>array[i+1]){ 
+				sorted = false;}
+			i++;
+		}
+		// Das müsste noch implementiert werden!
+		return sorted;
 		}
 
 	
 	public static void output(int array[]){
 		
-	for (int i=0; i<array.length; i++){	
-		System.out.print(array[i]+",");
-	}
-	System.out.println("");
+		for (int i=0; i<array.length; i++){	
+			System.out.print(array[i]+",");
+			}
+		System.out.println("sortiert:"+ isSorted(array));
 	}
 	
 }
