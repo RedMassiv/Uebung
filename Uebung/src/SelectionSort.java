@@ -1,10 +1,19 @@
 public class SelectionSort {
-	
+
+static int counter=0;
+
 	public static void main(String[] args) {   // Hauptmethode
+		int n=1000; //Anzahl der Arrayfelder
+		int list[] = new int[n];   // Array wird angelegt mit der richtigen Anzahl an Feldern
+		for (int i=0; i<n; i++){
+			double random=Math.random()*1000;
+			list[i]=(int)random;
+		}
 		
-		int[] list = {5, 8, 3, 6, 8, 9, 3, 57, 71, 77, 4, 2, 10, 574 ,0 ,5};   // Array wird angelegt
+		
 		output(list);
 		sortArray(list);									    // Array wird an die Funktion "SortArray" übergeben
+		System.out.println("Sortiervorgänge: "+counter);
 		
 		}
 	
@@ -74,6 +83,7 @@ public class SelectionSort {
 			System.out.print(array[i]+",");
 			}
 		System.out.println("sortiert:"+ isSorted(array));
+		counter++;
 	}
 	
 }
